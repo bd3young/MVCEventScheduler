@@ -1,4 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace MVCEventScheduler.Controllers
 {
@@ -7,12 +11,27 @@ namespace MVCEventScheduler.Controllers
         // GET: Event
 
         [HttpPost]
-        public ActionResult NewEvent(string eventName, string eventHost, string email)
+        public ActionResult NewEvent(string eventName, string eventHost, string email, bool isPublic)
         {
-            ViewBag.Message = $"Name: {eventName}";
-            ViewBag.Message = $"Host: {eventHost}";
-            ViewBag.Message += $"email: {email}";
-            return View("ConfirmEvent");
+            bool t = isPublic;
+            if (t == true)
+            {
+                ViewBag.Message += $"Name: {eventName}    ";              
+                ViewBag.Message += $"Host: {eventHost}    ";
+                ViewBag.Message += $"Email: {email}    ";
+                ViewBag.Message += $"Public: {isPublic}    ";
+                return View("ConfirmPublicEvent");
+            }
+            else
+            {
+                ViewBag.Message += $"Name: {eventName}    ";
+                ViewBag.Message += $"Host: {eventHost}    ";
+                ViewBag.Message += $"Email: {email}    ";
+                ViewBag.Message += $"Public: {isPublic}    ";
+                return View("ConfirmEvent");
+            }
+
+
         }
 
         public ActionResult NewEvent()

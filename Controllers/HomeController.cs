@@ -11,14 +11,14 @@ namespace MVCEventScheduler.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Welcome to Event Scheduler, a website that allows you to schedule private and public events.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "My Email: deyoun39@mail.nmc.edu";
 
             return View();
         }
