@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using MVCEventScheduler.Models;
 
 namespace MVCEventScheduler.Controllers
 {
@@ -9,6 +10,10 @@ namespace MVCEventScheduler.Controllers
         [HttpPost]
         public ActionResult NewEvent(string eventName, string eventHost, string email)
         {
+            EventModel e = new EventModel()
+            {
+
+            };
             ViewBag.Message = $"Name: {eventName}";
             ViewBag.Message = $"Host: {eventHost}";
             ViewBag.Message += $"email: {email}";
