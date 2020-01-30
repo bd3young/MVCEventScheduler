@@ -6,6 +6,7 @@ namespace MVCEventScheduler.Models
     {
 
         public string EventName { get; set; }
+        public string EventType { get; set; }
         public string EventHost { get; set; }
         public string Email { get; set; }
         public DateTime EventDateTime { get; set; }

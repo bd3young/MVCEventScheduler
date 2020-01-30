@@ -190,6 +190,9 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Locked.PNG" />
+    <Content Include="Content\NewEvent.css" />
+    <Content Include="Content\Unlocked.jfif" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -344,6 +347,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Event\ConfirmEvent.cshtml" />
     <Content Include="Views\Event\NewEventForm.cshtml" />
+    <Content Include="Views\Event\ConfirmPublicEvent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
