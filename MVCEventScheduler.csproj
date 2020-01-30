@@ -348,6 +348,8 @@
     <Content Include="Views\Event\ConfirmEvent.cshtml" />
     <Content Include="Views\Event\NewEventForm.cshtml" />
     <Content Include="Views\Event\ConfirmPublicEvent.cshtml" />
+    <Content Include="Views\Event\EventCalculator.cshtml" />
+    <Content Include="Views\Event\PostedEventsForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

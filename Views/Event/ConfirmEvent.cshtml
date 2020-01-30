@@ -13,7 +13,12 @@
 <body>
     <h2>Confirm Non Public Event</h2>
     <p>The following Non Public event has been added to the system</p>
-    <p>@ViewBag.Message</p>
+    <p>Event Name: @Model.EventName</p>
+    <p>Event Type: @Model.EventType</p>
+    <p>Event Host: @Model.EventHost</p>
+    <p>Email: @Model.Email</p>
+    <p>Id: @Model.Id</p>
+    <p>Public: @Model.IsPublic</p>
     <img src="~/Content/Locked.PNG" style="width:100px;" />
 </body>
 </html>

@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "PostedEventsForm";
+    string[] sportingEvents = { "Soccer", "Football", "Water Polo", "Basketball" };
+    int sportingEventsLen = sportingEvents.Length;
+    string[] gamingEvents = { "League of Legends", "Destiny 2", "Fortnite", "Super Samsh Brothers Ultimate" };
+    int gamingEventsLen = gamingEvents.Length;
+    string[] partyEvents = { "Kevins Birthday Party", "Beach Party", "House Party" };
+    int partyEventsLen = partyEvents.Length;
+    var x = 0;
+}
+
+<h2>Posted Events Form</h2>
+<hr />
+<h3>Sporting Events</h3>
+@for (x = 0; x < sportingEventsLen; x++)
+{
+    <p>@sportingEvents[x]</p>
+}
+<hr />
+<h3>Gaming Events</h3>
+@foreach (var events in gamingEvents)
+{
+    <p>@events</p>
+}
+<hr />
+<h3>Party Events</h3>
+@{
+    x = 0;
+    while (x < partyEventsLen)
+    {
+        <p>@partyEvents[x]</p>
+        x += 1;
+    }
+}
+<hr />
+

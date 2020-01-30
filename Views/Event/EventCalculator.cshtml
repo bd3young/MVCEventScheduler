@@ -1,0 +1,33 @@
+﻿
+@{
+    var totalMessage = "";
+    if (IsPost)
+    {
+        var num1 = Request["party"];
+        var party = num1.AsInt();
+        var num2 = Request["cost"];
+        var c = num2.AsInt();
+        var totalCost = 0.00;
+        totalCost = party * c;
+
+        totalMessage = "Total Cost = $" + totalCost;
+    }
+}
+
+<h2>Event Calculator</h2>
+<html>
+<body style="background-color: beige; font-family: Verdana, Arial;">
+    <form action="" method="post">
+        <p>
+            <label for="party">How many in your party?:</label>
+            <input type="number" placeholder="0" name="party" />
+        </p>
+        <p>
+            <label for="cost">Cost of Event:</label>
+            <input type="number" placeholder="0" name="cost" />
+        </p>
+        <p><input type="submit" value=" Calculate Total Event Costs" /></p>
+    </form>
+    <p>@totalMessage</p>
+</body>
+</html>
