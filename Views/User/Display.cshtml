@@ -1,0 +1,34 @@
+﻿@model IEnumerable<MVCEventScheduler.Models.User>
+
+<h2>Users Display</h2>
+
+<table class="table text-light bg-dark">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(Model => Model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(Model => Model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(Model => Model.Email)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(ModelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(ModelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(ModelItem => item.Email)
+            </td>
+            <td></td>
+        </tr>
+    }
+</table>
+

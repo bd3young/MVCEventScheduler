@@ -21,6 +21,11 @@ namespace MVCEventScheduler.Controllers
             return View(db.Users.ToList());
         }
 
+        public ActionResult Display()
+        {
+            return View(db.Users.ToList());
+        }
+
         // GET: User/Details/5
         public ActionResult Details(int? id)
         {
