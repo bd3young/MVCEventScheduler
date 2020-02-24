@@ -374,6 +374,7 @@
     <Content Include="Views\Attendance\Edit.cshtml" />
     <Content Include="Views\Attendance\Index.cshtml" />
     <Content Include="Views\User\Display.cshtml" />
+    <Content Include="Views\User\EditDisplay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
