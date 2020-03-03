@@ -17,18 +17,21 @@
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(ModelItem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(ModelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(ModelItem => item.Email)
-            </td>
-            <td></td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(ModelItem => item.UserName)
+    </td>
+    <td>
+        @Html.DisplayFor(ModelItem => item.Location)
+    </td>
+    <td>
+        @Html.DisplayFor(ModelItem => item.Email)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "EditDisplay", new { id = item.ID })
+    </td>
+    <td></td>
+</tr>
     }
 </table>
 
