@@ -12,7 +12,7 @@ namespace MVCEventScheduler.Models
     public class Attendance
     {
 
-        public int Id { get; set; }
+        public int AttendanceId { get; set; }
         public int EventID { get; set; }
         public int UserID { get; set; }
         public Status Status { get; set; }

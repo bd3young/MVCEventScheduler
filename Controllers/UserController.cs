@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MVCEventScheduler.DAL;
 using MVCEventScheduler.Models;
+using PagedList;
 
 namespace MVCEventScheduler.Controllers
 {
@@ -54,12 +55,21 @@ namespace MVCEventScheduler.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,UserName,Location,Email")] User user)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
+            catch (DataException)
+            {
+
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+
 
             return View(user);
         }
@@ -86,12 +96,21 @@ namespace MVCEventScheduler.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,UserName,Location,Email")] User user)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(user).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
+            catch (DataException)
+            {
+
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+
             return View(user);
         }
 
@@ -115,10 +134,19 @@ namespace MVCEventScheduler.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                User user = db.Users.Find(id);
+                db.Users.Remove(user);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (DataException)
+            {
+
+                return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+            }
+
         }
 
         protected override void Dispose(bool disposing)
