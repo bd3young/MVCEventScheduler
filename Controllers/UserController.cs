@@ -12,11 +12,13 @@ using PagedList;
 
 namespace MVCEventScheduler.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private EventContext db = new EventContext();
 
         // GET: User
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.Users.ToList());

@@ -11,11 +11,13 @@ using MVCEventScheduler.Models;
 
 namespace MVCEventScheduler.Controllers
 {
+    [Authorize]
     public class EventModelController : Controller
     {
         private EventContext db = new EventContext();
 
         // GET: EventModel
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.Events.ToList());

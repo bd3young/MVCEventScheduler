@@ -12,11 +12,13 @@ using PagedList;
 
 namespace MVCEventScheduler.Controllers
 {
+    [Authorize]
     public class AttendanceController : Controller
     {
         private EventContext db = new EventContext();
 
         // GET: Attendance
+        [AllowAnonymous]
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
