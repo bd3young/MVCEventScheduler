@@ -6,6 +6,7 @@ namespace MVCEventScheduler.Models
 {
     public class User
     {
+        [Key]
         public int ID { get; set; }
 
         [Required(ErrorMessage = "Please enter a Username")]
