@@ -11,11 +11,13 @@ using MVCEventScheduler.Models;
 
 namespace MVCEventScheduler.Controllers
 {
+    [Authorize]
     public class EventModelController : Controller
     {
         private EventContext db = new EventContext();
 
         // GET: EventModel
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.Events.ToList());
@@ -49,12 +51,20 @@ namespace MVCEventScheduler.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,EventName,EventType,EventHost,Email,EventDateTime,IsPublic,Location")] EventModel eventModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Events.Add(eventModel);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Events.Add(eventModel);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+
 
             return View(eventModel);
         }
@@ -81,12 +91,21 @@ namespace MVCEventScheduler.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,EventName,EventType,EventHost,Email,EventDateTime,IsPublic,Location")] EventModel eventModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(eventModel).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(eventModel).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
+            catch (DataException)
+            {
+
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+
             return View(eventModel);
         }
 
@@ -110,10 +129,19 @@ namespace MVCEventScheduler.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            EventModel eventModel = db.Events.Find(id);
-            db.Events.Remove(eventModel);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                EventModel eventModel = db.Events.Find(id);
+                db.Events.Remove(eventModel);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (DataException)
+            {
+
+                return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+            }
+
         }
 
         protected override void Dispose(bool disposing)

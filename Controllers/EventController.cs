@@ -7,6 +7,7 @@ using System.Web;
 
 namespace MVCEventScheduler.Controllers
 {
+    [Authorize]
     public class EventController : Controller
     {
         // GET: Event
