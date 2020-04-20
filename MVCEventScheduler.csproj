@@ -183,11 +183,21 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DAL\EventConfiguration.cs" />
     <Compile Include="DAL\EventContext.cs" />
     <Compile Include="DAL\EventInitializer.cs" />
+    <Compile Include="DAL\EventInterceptorLogging.cs" />
+    <Compile Include="DAL\EventInterceptorTransientErrors.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logger\ILogger.cs" />
+    <Compile Include="Logger\Logger.cs" />
+    <Compile Include="Migrations\202004201800221_InitialCreate.cs" />
+    <Compile Include="Migrations\202004201800221_InitialCreate.designer.cs">
+      <DependentUpon>202004201800221_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\EventModel.cs" />
@@ -396,6 +406,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202004201800221_InitialCreate.resx">
+      <DependentUpon>202004201800221_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

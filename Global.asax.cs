@@ -1,6 +1,8 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using MVCEventScheduler.DAL;
+using System.Data.Entity.Infrastructure.Interception;
 
 namespace MVCEventScheduler
 {
@@ -12,6 +14,8 @@ namespace MVCEventScheduler
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            DbInterception.Add(new EventInterceptorTransientErrors());
+            DbInterception.Add(new EventInterceptorLogging());
         }
     }
 }

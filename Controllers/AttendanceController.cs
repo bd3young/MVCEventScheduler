@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using MVCEventScheduler.DAL;
 using MVCEventScheduler.Models;
 using PagedList;
+using System.Data.Entity.Infrastructure;
 
 namespace MVCEventScheduler.Controllers
 {
@@ -100,7 +101,7 @@ namespace MVCEventScheduler.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (DataException)
+            catch (RetryLimitExceededException)
             {
 
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
@@ -145,7 +146,7 @@ namespace MVCEventScheduler.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (DataException)
+            catch (RetryLimitExceededException)
             {
 
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
@@ -183,7 +184,7 @@ namespace MVCEventScheduler.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch (DataException)
+            catch (RetryLimitExceededException)
             {
 
                 return RedirectToAction("Delete", new { id = id, saveChangesError = true });

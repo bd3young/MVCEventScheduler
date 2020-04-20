@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using MVCEventScheduler.DAL;
 using MVCEventScheduler.Models;
 using PagedList;
+using System.Data.Entity.Infrastructure;
 
 namespace MVCEventScheduler.Controllers
 {
