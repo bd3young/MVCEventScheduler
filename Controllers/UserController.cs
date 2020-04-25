@@ -10,6 +10,7 @@ using MVCEventScheduler.DAL;
 using MVCEventScheduler.Models;
 using PagedList;
 using System.Data.Entity.Infrastructure;
+using MVCEventScheduler.ViewModels;
 
 namespace MVCEventScheduler.Controllers
 {
@@ -106,6 +107,7 @@ namespace MVCEventScheduler.Controllers
         }
 
         // GET: User/Edit/5
+        [Authorize (Roles ="Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -119,6 +121,42 @@ namespace MVCEventScheduler.Controllers
             }
             return View(user);
         }
+
+        //public ActionResult Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    User user = db.Users
+        //        .Include(i => i.Attendances)
+        //        .Where(i => i.ID == id)
+        //        .Single();
+        //    PopulateAttendanceData(user);
+        //    if (user == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(user);
+        //}
+
+        //private void PopulateAttendanceData(User user)
+        //{
+        //    var allAttendances = db.Attendances;
+        //    var UserAttendances = new HashSet<int>(user.Attendances.Select(c => c.EventID));
+        //    var viewModel = new List<AssignedAttendanceData>();
+        //    foreach (var attendance in allAttendances)
+        //    {
+        //        viewModel.Add(new AssignedAttendanceData
+        //        {
+        //            EventID = attendance.EventID,
+        //            //EventName = attendance.Event.EventName,
+        //            UserID = attendance.UserID,
+        //            Status = attendance.Status
+        //        });
+        //    }
+        //    ViewBag.Attendances = viewModel;
+        //}
 
         // POST: User/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -144,6 +182,74 @@ namespace MVCEventScheduler.Controllers
 
             return View(user);
         }
+
+        //public ActionResult Edit(int? id, Status[] selectedStatus)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    var userToUpdate = db.Users
+        //       .Include(i => i.Attendances)
+        //       .Where(i => i.ID == id)
+        //       .Single();
+
+        //    if (TryUpdateModel(userToUpdate, "",
+        //       new string[] { "UserName", "Location", "Email" }))
+        //    {
+        //        try
+        //        {
+        //            //if (String.IsNullOrWhiteSpace(userToUpdate.Attendances.))
+        //            //{
+        //            //    userToUpdate.OfficeAssignment = null;
+        //            //}
+
+        //            UpdateUserAttendances(selectedStatus, userToUpdate);
+
+        //            db.SaveChanges();
+
+        //            return RedirectToAction("Index");
+        //        }
+        //        catch (RetryLimitExceededException /* dex */)
+        //        {
+        //            //Log the error (uncomment dex variable name and add a line here to write a log.
+        //            ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+        //        }
+        //    }
+        //    PopulateAttendanceData(userToUpdate);
+        //    return View(userToUpdate);
+        //}
+        //private void UpdateUserAttendances(Status[] selectedStatus, User userToUpdate)
+        //{
+        //    if (selectedStatus == null)
+        //    {
+        //        userToUpdate.Attendances = new List<Attendance>();
+        //        return;
+        //    }
+
+        //    var selectedStatusHS = new HashSet<Status>(selectedStatus);
+        //    var userAttendances = new HashSet<int>
+        //        (userToUpdate.Attendances.Select(c => c.Id));
+        //    foreach (var attendance in db.Attendances)
+        //    {
+        //        if (selectedStatusHS.Contains(attendance.Status))
+        //        {
+        //            if (!userAttendances.Contains(attendance.Id))
+        //            {
+        //                userToUpdate.Attendances.Add(attendance);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            if (userAttendances.Contains(attendance.Id))
+        //            {
+        //                userToUpdate.Attendances.Remove(attendance);
+        //            }
+        //        }
+        //    }
+        //}
+
+
 
         // GET: User/Delete/5
         public ActionResult Delete(int? id)

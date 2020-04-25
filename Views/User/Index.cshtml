@@ -3,13 +3,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Users</h2>
+<h2 class="text-center jumbotron bg-info text-white">Users</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create") |
     @Html.ActionLink("Display", "Display")
 </p>
-<table class="table bg-secondary">
+<table class="table bg-light">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.UserName)
@@ -20,6 +20,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
+        @*<th>
+            Attendances
+        </th>*@
         <th></th>
     </tr>
 
@@ -35,6 +38,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
+            @*<td>
+                @{
+                    foreach (var attendance in item.Attendances)
+                    {
+                        @attendance.Event.EventName @: - @attendance.Status <br />
+                    }
+                }
+            </td>*@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ID }) |

@@ -114,6 +114,7 @@ namespace MVCEventScheduler.Controllers
         }
 
         // GET: Attendance/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -130,12 +131,31 @@ namespace MVCEventScheduler.Controllers
             return View(attendance);
         }
 
+        //    public ActionResult Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Attendance attendance = db.Attendances
+        //        .Include(i => i.Event)
+        //        .Where(i => i.Id == id)
+        //        .Single();
+        //    if (attendance == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.EventID = new SelectList(db.Events, "Id", "EventName", attendance.EventID);
+        //    ViewBag.UserID = new SelectList(db.Users, "ID", "UserName", attendance.UserID);
+        //    return View(attendance);
+        //}
+
         // POST: Attendance/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AttendanceId,EventID,UserID,Status")] Attendance attendance)
+        public ActionResult Edit([Bind(Include = "Id,EventID,UserID,Status")] Attendance attendance)
         {
             try
             {
@@ -156,6 +176,42 @@ namespace MVCEventScheduler.Controllers
             ViewBag.UserID = new SelectList(db.Users, "ID", "UserName", attendance.UserID);
             return View(attendance);
         }
+
+        //[HttpPost, ActionName("Edit")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult EditPost(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    var attendanceToUpdate = db.Attendances
+        //       .Include(i => i.Event)
+        //       .Where(i => i.Id == id)
+        //       .Single();
+
+        //    if (TryUpdateModel(attendanceToUpdate, "",
+        //       new string[] { "UserID", "Status" }))
+        //    {
+        //        try
+        //        {
+        //            if (String.IsNullOrWhiteSpace(attendanceToUpdate.Event.Location))
+        //            {
+        //                attendanceToUpdate.Event = null;
+        //            }
+
+        //            db.SaveChanges();
+
+        //            return RedirectToAction("Index");
+        //        }
+        //        catch (RetryLimitExceededException /* dex */)
+        //        {
+        //            //Log the error (uncomment dex variable name and add a line here to write a log.
+        //            ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+        //        }
+        //    }
+        //    return View(attendanceToUpdate);
+        //}
 
         // GET: Attendance/Delete/5
         public ActionResult Delete(int? id)

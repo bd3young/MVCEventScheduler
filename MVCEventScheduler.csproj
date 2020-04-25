@@ -171,6 +171,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationContextMigrations\202004201942358_Initial.cs" />
+    <Compile Include="ApplicationContextMigrations\202004201942358_Initial.designer.cs">
+      <DependentUpon>202004201942358_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationContextMigrations\202004211705420_UserRoles.cs" />
+    <Compile Include="ApplicationContextMigrations\202004211705420_UserRoles.designer.cs">
+      <DependentUpon>202004211705420_UserRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationContextMigrations\Configuration.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -188,6 +197,11 @@
     <Compile Include="DAL\EventInitializer.cs" />
     <Compile Include="DAL\EventInterceptorLogging.cs" />
     <Compile Include="DAL\EventInterceptorTransientErrors.cs" />
+    <Compile Include="DataContextMigrations\202004201934333_Initial.cs" />
+    <Compile Include="DataContextMigrations\202004201934333_Initial.designer.cs">
+      <DependentUpon>202004201934333_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataContextMigrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -206,6 +220,8 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AssignedAttendanceData.cs" />
+    <Compile Include="ViewModels\EventIndexData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -408,6 +424,15 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ApplicationContextMigrations\202004201942358_Initial.resx">
+      <DependentUpon>202004201942358_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ApplicationContextMigrations\202004211705420_UserRoles.resx">
+      <DependentUpon>202004211705420_UserRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataContextMigrations\202004201934333_Initial.resx">
+      <DependentUpon>202004201934333_Initial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004201800221_InitialCreate.resx">
       <DependentUpon>202004201800221_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>

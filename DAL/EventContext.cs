@@ -7,7 +7,7 @@ namespace MVCEventScheduler.DAL
     public class EventContext : DbContext
     {
 
-        public EventContext() : base("EventContext")
+        public EventContext() : base("DefaultConnection")
         {
         }
 

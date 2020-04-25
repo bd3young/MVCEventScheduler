@@ -2,12 +2,13 @@
 
 @{
     ViewBag.Title = "Details";
+    string AttendanceName = Model.User.UserName;
 }
 
-<h2>Details</h2>
+<h2 class="text-center jumbotron bg-info text-white">Details</h2>
 
 <div>
-    <h4>Attendance</h4>
+    <h4>@AttendanceName</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -37,6 +38,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AttendanceId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
